@@ -1,0 +1,5 @@
+<%= form_for(@user) do |f| %>
+  <%= f.label t 'twitter_id' %>
+  <%= f.text_field :twitter_id %>
+  <%= f.submit t('send') %>
+<% end %>

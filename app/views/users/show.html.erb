@@ -1,0 +1,8 @@
+<h2><%= t 'user_details' %></h2>
+
+<p><%= @user.name %></p>
+<p><%= @user.email %></p>
+<p><%= @user.twitter_id %></p>
+  
+  
+<%= link_to t('edit'), edit_user_path(@user) %>
