@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = @current_user || User.find(params[:id])
   end
 
-  def user_paramas
+  def user_params
     params.require(:user).permit(:twitter_id)
   end
 end
