@@ -45,3 +45,5 @@ end
 gem 'omniauth-redbooth'
 gem 'pubnub'
 gem 'redbooth-ruby', git: 'https://github.com/teambox/redbooth-ruby.git'
+gem 'rufus-scheduler'
+gem 'rails-observers'
