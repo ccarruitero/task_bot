@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    @current_user ||= User.find_by(token: session[:access_token]) if session[:access_token]
+    if session[:access_provider] == 'redbooth'
+      @current_user ||= User.find_by(token: session[:access_token]) if session[:access_token]
+    elsif session[:access_provider] == 'trello'
+      @current_user ||= User.find_by(trello_token: session[:access_token]) if session[:access_token]
+    end
   end
 
   private
