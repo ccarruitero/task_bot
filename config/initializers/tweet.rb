@@ -19,7 +19,7 @@ if ENV['PUBNUB_PUBLISH_KEY'] and ENV['PUBNUB_SUBSCRIBE_KEY']
     text = msg['text']
     user = User.find_by twitter_id: twitter_user
     if !user.nil?
-      user.create_task text, ENV['TRACK_TERM']
+      user.create_task text
     end
    }
 

@@ -2,7 +2,11 @@ require 'redbooth-ruby'
 require 'trello'
 
 class User < ActiveRecord::Base
-  def create_task text, project_name
+  def create_task text
+    self.send("#{self.provider}_task", text)
+  end
+
+  def redbooth_task text
     redbooth_session = RedboothRuby::Session.new(
       token: self.token
     )
@@ -12,7 +16,7 @@ class User < ActiveRecord::Base
     project_id = nil
 
     projects.each do |red_project|
-      if red_project['name'] == project_name
+      if red_project['name'] == self.project_name
         project_id = red_project['id']
       end
     end
