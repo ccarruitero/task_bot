@@ -1,1 +1,9 @@
-<%= link_to t('login'), '/auth/redbooth' %>
+<%= t 'login_with' %>
+
+<% @providers.each do |provider| %>
+  <div class="provider-box">
+    <a href=<%= "/auth/#{provider.name}" %>>
+      <%= image_tag provider.logo_url, class: 'provider_img' %>
+    </a>
+  </div>
+<% end %>
