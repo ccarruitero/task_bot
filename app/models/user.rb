@@ -1,4 +1,5 @@
 require 'redbooth-ruby'
+require 'trello'
 
 class User < ActiveRecord::Base
   def create_task text, project_name
@@ -47,5 +48,26 @@ class User < ActiveRecord::Base
     @access_token = refresh_access_token_obj.refresh!
     new_token = @access_token.token
     self.update token: new_token
+  end
+
+  def trello_task text
+    Trello.configure do |config|
+      config.developer_public_key = ENV['TRELLO_APP_KEY']
+      config.member_token = self.trello_token
+    end
+
+    boards = Trello::Board.all
+
+    board = boards.detect do |board|
+      board.name == self.project_name
+    end
+
+    if board.nil?
+      board = Trello::Board.create(
+        name: self.project_name
+      )
+    end
+    list = board.lists.first
+    card = Trello::Card.create(name: text, list_id: list.id)
   end
 end
