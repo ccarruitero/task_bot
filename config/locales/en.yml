@@ -1,3 +1,5 @@
 en:
   twitter_id: "twitter id"
   send: "Send"
+  project_name: "Project name"
+  provider: "Provider"
