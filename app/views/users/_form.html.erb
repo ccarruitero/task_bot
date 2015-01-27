@@ -2,7 +2,7 @@
   <%= f.label t 'twitter_id' %>
   <%= f.text_field :twitter_id %>
   <%= f.label t 'provider' %>
-  <%= f.text_field :provider %>
+  <%= f.collection_select :provider, @providers, :name, :name %>
   <%= f.label t 'project_name' %>
   <%= f.text_field :project_name %>
   <%= f.submit t('send') %>
