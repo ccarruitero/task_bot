@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120161403) do
+ActiveRecord::Schema.define(version: 20150127011549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.text   "logo_url"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +29,10 @@ ActiveRecord::Schema.define(version: 20150120161403) do
     t.datetime "updated_at",    null: false
     t.string   "token"
     t.string   "refresh_token"
+    t.string   "provider"
+    t.string   "project_name"
+    t.string   "trello_token"
+    t.string   "trello_secret"
   end
 
 end
